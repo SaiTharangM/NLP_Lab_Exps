@@ -5,7 +5,7 @@ nltk.download('punkt')
 nltk.download('punkt_tab')
 nltk.download('wordnet')
 text = input("Enter a sentence : ")
-tokens = word_tokenize(text)
+tokens = word_tokenize(text) 
 stemmer = PorterStemmer()
 stemmed_words = [stemmer.stem(word) for word in tokens]
 lemmatizer = WordNetLemmatizer()
