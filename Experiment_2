@@ -1,0 +1,33 @@
+import nltk
+from nltk.corpus import treebank
+from nltk.tag import hmm
+from nltk.tokenize import word_tokenize
+nltk.download('treebank')
+nltk.download('punkt')
+nltk.download('punkt_tab')
+train_data = treebank.tagged_sents()
+trainer = hmm.HiddenMarkovModelTrainer()
+tagger = trainer.train(train_data)
+text = input("Enter a sentence: ")
+tokens = word_tokenize(text)
+tagged_words = tagger.tag(tokens)
+print("\nTokens:")
+print(tokens)
+print("\nPOS Tags (Using HMM):")
+for word, tag in tagged_words:
+    print(f"{word} -> {tag}")
+print("\nCommon Tag Meanings:")
+print("NN  -> Noun")
+print("NNS -> Plural Noun")
+print("NNP -> Proper Noun")
+print("VB  -> Verb (Base Form)")
+print("VBD -> Verb (Past Tense)")
+print("VBG -> Verb (Gerund)")
+print("VBN -> Past Participle")
+print("VBP -> Verb (Present)")
+print("VBZ -> Verb (3rd Person Singular)")
+print("JJ  -> Adjective")
+print("RB  -> Adverb")
+print("PRP -> Pronoun")
+print("DT  -> Determiner")
+print("\nTotal Words:", len(tokens))
